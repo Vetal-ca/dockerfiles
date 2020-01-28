@@ -1,7 +1,7 @@
 FROM alpine:3.11 as build
+MAINTAINER "Vitali Khlebko vitali.khlebko@vetal.ca"
 
-
-ENV NGINX_VERSION nginx-1.17.7
+ENV NGINX_VERSION nginx-1.17.8
 
 RUN apk --update add openssl-dev pcre-dev zlib-dev wget build-base git geoip-dev expat-dev libxslt-dev libxml2-dev && \
     mkdir -p /tmp/src && \
@@ -62,6 +62,7 @@ ADD nginx /etc/nginx/
 
 # forward request and error logs to docker log collector
 RUN apk update && apk add geoip pcre openssl libxml2 && \
+    rm -rf /var/cache/apk/* && \
     mkdir -p /var/log/nginx/ &&\
     ln -sf /dev/stdout /var/log/nginx/access.log && \
     ln -sf /dev/stderr /var/log/nginx/error.log && \

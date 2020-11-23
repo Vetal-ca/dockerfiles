@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Needed for openvpn
 mkdir -p /run/openvpn
 mkdir -p /dev/net
@@ -14,4 +14,4 @@ iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE
 
 
 # Run actual OpenVPN
-exec /usr/sbin/openvpn --writepid /run/openvpn/server.pid --cd /etc/openvpn --config /etc/openvpn/server.conf --script-security 2
+exec /usr/bin/openvpn --writepid /run/openvpn/server.pid --cd /etc/openvpn --config /etc/openvpn/server.conf --script-security 2

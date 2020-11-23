@@ -70,7 +70,8 @@ RUN apk update && apk add geoip pcre openssl libxml2 && \
     mkdir -p /etc/nginx/htpasswd/ && \
     mkdir -p /etc/nginx/vhost.d/ && rm -rf /etc/nginx/sites-available/* && \
     mkdir -p /etc/nginx/dhparam/ && \
-    mkdir -p /static_data
+    mkdir -p /static_data && \
+    rm -rf /var/cache/apk/*
 
 WORKDIR /etc/nginx
 
